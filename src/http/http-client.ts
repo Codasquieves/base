@@ -1,33 +1,25 @@
 import { isNullOrUndefined } from "util";
 import axios from "axios";
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosInstance, AxiosResponse } from "axios";
+import { ExternalCall } from "./external-call";
 
 export class HttpClient {
   public static build(
     baseUrl: string,
     headers: Record<string, string> = {},
-    interceptors?: {
-      request?: (value: AxiosRequestConfig) => AxiosRequestConfig,
-      response?: <T>(value: AxiosResponse<T>) => AxiosResponse<T>,
-    }
+    intercept?: (parameters: ExternalCall) => void,
   ): AxiosInstance {
     const client = axios.create({
       baseURL: baseUrl,
       headers,
     });
 
-    if (isNullOrUndefined(interceptors)) {
-      return client;
-    }
+    if (!isNullOrUndefined(intercept)) {
 
-    const { request, response } = interceptors;
-
-    if (!isNullOrUndefined(request)) {
-      client.interceptors.request.use(request);
-    }
-
-    if (!isNullOrUndefined(response)) {
-      client.interceptors.response.use(response);
+      client.interceptors.response.use((value: AxiosResponse) => {
+        intercept(new ExternalCall(value));
+        return value;
+      });
     }
 
     return client;
