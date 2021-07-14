@@ -1,24 +1,23 @@
 import { isNullOrUndefined } from "util";
-import { inject, injectable } from "inversify";
-import { Logger } from "@codasquieves/logger";
+import { injectable } from "inversify";
 import { Result } from "../application/result";
 import type { QueryParam } from "../queries/query-param";
 
 @injectable()
 export abstract class QueryHandler {
-  @inject(Logger)
-  private readonly logger!: Logger;
-
   public async handle(param: QueryParam | undefined = undefined): Promise<Result> {
     try {
-      if (!isNullOrUndefined(param) && !param.isValid()) {
-        return Result.invalid();
+
+      if (!isNullOrUndefined(param)) {
+        const [isValid, errors] = param.validate();
+        if (!isValid) {
+          return Result.invalid(errors);
+        }
       }
 
       return await this.execute(param);
     } catch (ex) {
-      this.logger.error("QueryHandler", ex as Error, param);
-      return Result.error();
+      return Result.error(ex);
     }
   }
 

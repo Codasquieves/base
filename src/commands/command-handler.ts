@@ -1,23 +1,19 @@
-import { inject, injectable } from "inversify";
-import { Logger } from "@codasquieves/logger";
+import { injectable } from "inversify";
 import { Result } from "../application/result";
 import type { Command } from "../commands/command";
 
 @injectable()
 export abstract class CommandHandler {
-  @inject(Logger)
-  private readonly logger!: Logger;
-
   public async handle(command: Command): Promise<Result> {
     try {
-      if (!command.isValid()) {
-        return Result.invalid();
+      const [isValid, errors] = command.validate();
+      if (!isValid) {
+        return Result.invalid(errors);
       }
 
       return await this.execute(command);
     } catch (ex) {
-      this.logger.error("CommandHandler", ex as Error, command);
-      return Result.error();
+      return Result.error(ex);
     }
   }
 
