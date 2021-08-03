@@ -7,7 +7,6 @@ import type { QueryParam } from "../queries/query-param";
 export abstract class QueryHandler {
   public async handle(param: QueryParam | undefined = undefined): Promise<Result> {
     try {
-
       if (!isNullOrUndefined(param)) {
         const [isValid, errors] = param.validate();
         if (!isValid) {

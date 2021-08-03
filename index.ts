@@ -14,14 +14,14 @@ import { QueryParam } from "./src/queries/query-param";
 import { uuid } from "./src/utils/uuid";
 
 export {
-  Result, 
-  ResultType, 
-  Command, 
-  CommandHandler, 
-  HttpClient, 
-  QueryHandler, 
-  QueryParam, 
-  uuid, 
-  ExternalCall, 
+  Result,
+  ResultType,
+  Command,
+  CommandHandler,
+  HttpClient,
+  QueryHandler,
+  QueryParam,
+  uuid,
+  ExternalCall,
   HttpClientInterceptor,
-}
+};

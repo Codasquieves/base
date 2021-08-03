@@ -9,7 +9,7 @@ export abstract class Command {
 
     const validations = this.mapping(errors);
 
-    return [errors.length === 0, validations]
+    return [errors.length === 0, validations];
   }
 
   private mapping(errors?: ValidationError[]): Validation[] {
@@ -19,12 +19,7 @@ export abstract class Command {
 
     const validations: Validation[] = [];
     for (const error of errors) {
-      const item = new Validation(
-        error.property,
-        this.mapping(error.children),
-        error.constraints,
-        error.value,
-      );
+      const item = new Validation(error.property, this.mapping(error.children), error.constraints, error.value);
 
       validations.push(item);
     }

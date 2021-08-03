@@ -8,7 +8,7 @@ export class HttpClient {
   public static build(
     baseUrl: string,
     headers: Record<string, string> = {},
-    interceptor?: HttpClientInterceptor,
+    interceptor?: HttpClientInterceptor
   ): AxiosInstance {
     const client = axios.create({
       baseURL: baseUrl,
@@ -16,11 +16,16 @@ export class HttpClient {
     });
 
     if (!isNullOrUndefined(interceptor)) {
-
-      client.interceptors.response.use((value: AxiosResponse) => {
-        interceptor.log(new ExternalCall(value));
-        return value;
-      });
+      client.interceptors.response.use(
+        (value: AxiosResponse) => {
+          interceptor.log(new ExternalCall(value));
+          return value;
+        },
+        async (error) => {
+          interceptor.error(error as Error);
+          return Promise.reject(error);
+        }
+      );
     }
 
     return client;
