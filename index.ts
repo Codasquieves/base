@@ -15,6 +15,15 @@ import { QueryParam } from "./src/queries/query-param";
 
 import { uuid } from "./src/utils/uuid";
 
+import { DomainEvent } from "./src/domain-events/domain-event";
+import { EventPublisher } from "./src/domain-events/event-publisher";
+import { EventSubscriber } from "./src/domain-events/event-subscriber";
+import { MemoryEventBus } from "./src/domain-events/memory-event-bus";
+import { ExecutionError } from "./src/domain-events/events/execution-error";
+import { InvalidParametersError } from "./src/domain-events/events/invalid-parameters-error";
+
+import { Constructor, EventCallback } from "./src/types";
+
 export {
   Result,
   ResultType,
@@ -28,4 +37,12 @@ export {
   uuid,
   ExternalCall,
   HttpClientInterceptor,
+  DomainEvent,
+  EventPublisher,
+  EventSubscriber,
+  MemoryEventBus,
+  ExecutionError,
+  InvalidParametersError,
+  Constructor,
+  EventCallback,
 };

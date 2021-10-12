@@ -1,13 +1,8 @@
-/* eslint-disable @typescript-eslint/no-type-alias */
-
 import { Container, injectable } from "inversify";
-import type { Result } from "../application/result";
+import type { Constructor } from "../types";
 import type { Command } from "./command";
 import type { CommandBus } from "./command-bus";
 import type { CommandHandler } from "./command-handler";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Constructor<T> = new (...args: any[]) => T;
 
 @injectable()
 export class InversifyCommandBus implements CommandBus {
@@ -25,9 +20,9 @@ export class InversifyCommandBus implements CommandBus {
     return this;
   }
 
-  public async publish<C extends Command>(command: C): Promise<Result> {
+  public async publish<C extends Command>(command: C): Promise<void> {
     const handler: CommandHandler<C> = this.container.get(command.constructor.name);
 
-    return handler.handle(command);
+    await handler.handle(command);
   }
 }

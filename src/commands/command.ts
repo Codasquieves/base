@@ -2,14 +2,24 @@ import { isNullOrUndefined } from "util";
 import type { ValidationError } from "class-validator";
 import { validateSync } from "class-validator";
 import { Validation } from "../application/validation";
+import { uuid } from "../utils/uuid";
 
 export abstract class Command {
+  public readonly datetime: Date;
+
+  public readonly uniqId: string;
+
+  public constructor() {
+    this.datetime = new Date();
+    this.uniqId = uuid();
+  }
+
   public validate(): [boolean, Validation[]] {
     const errors = validateSync(this);
 
     const validations = this.mapping(errors);
 
-    return [errors.length === 0, validations];
+    return [errors.length !== 0, validations];
   }
 
   private mapping(errors?: ValidationError[]): Validation[] {
