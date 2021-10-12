@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class Validation {
-  public property: string;
+  public readonly property: string;
 
-  public value?: any;
+  public readonly value?: any;
 
-  public validations?: Record<string, string>;
+  public readonly validations?: Record<string, string>;
 
-  public childrens: Validation[];
+  public readonly childrens: Validation[];
 
   public constructor(property: string, childrens: Validation[], validations?: Record<string, string>, value?: any) {
     this.property = property;

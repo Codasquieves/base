@@ -3,6 +3,8 @@ import { ResultType } from "./src/application/result-type";
 
 import { Command } from "./src/commands/command";
 import { CommandHandler } from "./src/commands/command-handler";
+import { CommandBus } from "./src/commands/command-bus";
+import { InversifyCommandBus } from "./src/commands/inversify-command-bus";
 
 import { HttpClient } from "./src/http/http-client";
 import { ExternalCall } from "./src/http/external-call";
@@ -18,9 +20,11 @@ export {
   ResultType,
   Command,
   CommandHandler,
-  HttpClient,
+  CommandBus,
+  InversifyCommandBus,
   QueryHandler,
   QueryParam,
+  HttpClient,
   uuid,
   ExternalCall,
   HttpClientInterceptor,

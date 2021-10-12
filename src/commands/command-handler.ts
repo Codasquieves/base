@@ -3,8 +3,8 @@ import { Result } from "../application/result";
 import type { Command } from "../commands/command";
 
 @injectable()
-export abstract class CommandHandler {
-  public async handle(command: Command): Promise<Result> {
+export abstract class CommandHandler<T extends Command> {
+  public async handle(command: T): Promise<Result> {
     try {
       const [isValid, errors] = command.validate();
       if (!isValid) {
@@ -17,5 +17,5 @@ export abstract class CommandHandler {
     }
   }
 
-  protected abstract execute(command: Command): Promise<Result>;
+  protected abstract execute(command: T): Promise<Result>;
 }
