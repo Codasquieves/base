@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-type-alias */
+
 import { Container, injectable } from "inversify";
 import type { Result } from "../application/result";
 import type { Command } from "./command";
 import type { CommandBus } from "./command-bus";
 import type { CommandHandler } from "./command-handler";
 
-// eslint-disable-next-line @typescript-eslint/no-type-alias
-type Constructor<T> = new (...args: unknown[]) => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Constructor<T> = new (...args: any[]) => T;
 
 @injectable()
 export class InversifyCommandBus implements CommandBus {

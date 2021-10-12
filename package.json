@@ -1,6 +1,6 @@
 {
   "name": "@codasquieves/base",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "class-validator": "^0.13.1",
     "inversify": "^5.1.1",
     "uuid": "^8.3.2"
@@ -26,7 +26,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-sonarjs": "^0.9.1",
     "eslint-plugin-unicorn": "^34.0.1",
-    "mocha": "^9.0.2",
+    "mocha": "^9.1.2",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
     "ts-node": "^10.1.0",
