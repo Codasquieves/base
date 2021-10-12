@@ -13,13 +13,13 @@ export abstract class CommandHandler<T extends Command> {
     try {
       const [isInvalid, errors] = command.validate();
       if (isInvalid) {
-        this.notifications.publish(new InvalidParametersError(errors));
+        await this.notifications.publish(new InvalidParametersError(errors));
         return;
       }
 
       await this.execute(command);
     } catch (ex) {
-      this.notifications.publish(new ExecutionError(ex as Error));
+      await this.notifications.publish(new ExecutionError(ex as Error));
     }
   }
 
