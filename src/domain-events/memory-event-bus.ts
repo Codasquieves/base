@@ -12,13 +12,11 @@ export class MemoryEventBus implements EventBus {
     this.events = new EventEmitter();
   }
 
-  public async on<E extends DomainEvent>(event: Constructor<E>, callback: EventCallback<E>): Promise<void> {
+  public on<E extends DomainEvent>(event: Constructor<E>, callback: EventCallback<E>): void {
     this.events.on(event.name, callback);
-    return Promise.resolve();
   }
 
-  public async publish(event: DomainEvent): Promise<void> {
+  public publish(event: DomainEvent): void {
     this.events.emit(event.constructor.name, event);
-    return Promise.resolve();
   }
 }
