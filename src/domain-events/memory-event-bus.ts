@@ -2,11 +2,10 @@ import EventEmitter from "events";
 import { injectable } from "inversify";
 import type { Constructor, EventCallback } from "../types";
 import type { DomainEvent } from "./domain-event";
-import type { EventPublisher } from "./event-publisher";
-import type { EventSubscriber } from "./event-subscriber";
+import type { EventBus } from "./event-bus";
 
 @injectable()
-export class MemoryEventBus implements EventPublisher, EventSubscriber {
+export class MemoryEventBus implements EventBus {
   private readonly events: EventEmitter;
 
   public constructor() {

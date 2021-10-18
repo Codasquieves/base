@@ -1,13 +1,13 @@
 import { inject, injectable } from "inversify";
 import { ExecutionError } from "../domain-events/events/execution-error";
-import { EventPublisher } from "../domain-events/event-publisher";
+import { EventBus } from "../domain-events/event-bus";
 import { InvalidParametersError } from "../domain-events/events/invalid-parameters-error";
 import type { Command } from "../commands/command";
 
 @injectable()
 export abstract class CommandHandler<T extends Command> {
-  @inject(EventPublisher)
-  protected readonly notifications!: EventPublisher;
+  @inject(EventBus)
+  protected readonly notifications!: EventBus;
 
   public async handle(command: T): Promise<void> {
     try {
