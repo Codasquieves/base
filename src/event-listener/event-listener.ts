@@ -2,5 +2,5 @@ import { injectable } from "inversify";
 
 @injectable()
 export abstract class EventListener {
-  public abstract register(): void;
+  public abstract initialize(): void;
 }
