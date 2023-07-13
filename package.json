@@ -21,6 +21,7 @@
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "cspell": "^6.31.1",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
@@ -48,6 +49,7 @@
     "prepublish": "npm run build",
     "dead-code": "npx ts-prune",
     "dead-packages": "npx depcheck",
-    "update-packages": "npx npm-check-updates -u"
+    "update-packages": "npx npm-check-updates -u",
+    "cspell": "cspell \"**\" --no-progress"
   }
 }

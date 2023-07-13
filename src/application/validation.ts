@@ -8,12 +8,12 @@ export class Validation {
 
   public readonly validations?: Record<string, string>;
 
-  public readonly childrens: Validation[];
+  public readonly children: Validation[];
 
-  public constructor(property: string, childrens: Validation[], validations?: Record<string, string>, value?: any) {
+  public constructor(property: string, children: Validation[], validations?: Record<string, string>, value?: any) {
     this.property = property;
     this.value = value;
     this.validations = validations;
-    this.childrens = childrens;
+    this.children = children;
   }
 }
