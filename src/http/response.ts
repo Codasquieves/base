@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 export class Response<T> {
   public data: T;

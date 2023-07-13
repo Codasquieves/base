@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { Request } from "./request";
 import { Response } from "./response";
 

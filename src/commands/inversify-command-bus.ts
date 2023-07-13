@@ -17,9 +17,11 @@ export class InversifyCommandBus implements CommandBus {
   public subscribe<C extends Command, H extends CommandHandler<C>>(
     command: Constructor<C>,
     handler: Constructor<H>,
-    eventListener?: Constructor<EventListener>
-  ): InversifyCommandBus {
-    this.container.bind(command.name).to(handler)
+    eventListener?: Constructor<EventListener>,
+  ): this {
+    this.container
+      .bind(command.name)
+      .to(handler)
       .onActivation((ctx, target) => {
         if (!isNullOrUndefined(eventListener)) {
           const listener = ctx.container.get<EventListener>(eventListener);

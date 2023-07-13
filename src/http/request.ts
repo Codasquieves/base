@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 
 export class Request {
   public url?: string;

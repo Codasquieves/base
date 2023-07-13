@@ -1,7 +1,7 @@
 import { ResultType } from "./result-type";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export class Result<T = object> {
+export class Result<T = unknown> {
   public event: ResultType;
 
   public data: T | null;

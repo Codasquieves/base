@@ -8,7 +8,7 @@ export class HttpClient {
   public static build(
     baseUrl: string,
     headers: Record<string, string> = {},
-    interceptor?: HttpClientInterceptor
+    interceptor?: HttpClientInterceptor,
   ): AxiosInstance {
     const client = axios.create({
       baseURL: baseUrl,
@@ -24,7 +24,7 @@ export class HttpClient {
         async (error) => {
           interceptor.error(error as Error);
           return Promise.reject(error);
-        }
+        },
       );
     }
 

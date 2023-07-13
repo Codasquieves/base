@@ -8,7 +8,7 @@ import { InversifyCommandBus } from "./src/commands/inversify-command-bus";
 
 import { HttpClient } from "./src/http/http-client";
 import { ExternalCall } from "./src/http/external-call";
-import { HttpClientInterceptor } from "./src/http/http-client-interceptor";
+import type { HttpClientInterceptor } from "./src/http/http-client-interceptor";
 
 import { QueryHandler } from "./src/queries/query-handler";
 import { QueryParam } from "./src/queries/query-param";
@@ -21,8 +21,9 @@ import { EventBus } from "./src/domain-events/event-bus";
 import { ExecutionError } from "./src/domain-events/events/execution-error";
 import { InvalidParametersError } from "./src/domain-events/events/invalid-parameters-error";
 
-import { Constructor, EventCallback } from "./src/types";
+import type { Constructor, EventCallback } from "./src/types";
 
+export type { HttpClientInterceptor, Constructor, EventCallback };
 export {
   Result,
   ResultType,
@@ -35,12 +36,9 @@ export {
   HttpClient,
   uuid,
   ExternalCall,
-  HttpClientInterceptor,
   DomainEvent,
   EventBus,
   MemoryEventBus,
   ExecutionError,
   InvalidParametersError,
-  Constructor,
-  EventCallback,
 };
